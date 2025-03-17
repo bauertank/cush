@@ -1,21 +1,43 @@
 # Summary
 
+## Solution
+
+The solution is available [here](/solution/). Supporting information is provided below.
+
 ## Method
-- User Workflow
-- Wireframe of screens
-- Database design
-- API design
+After reading through the document I started by defining the  **User Workflow** to distinguish the high level steps needed to complete the scenario.
+
+I then looked at prototyping some **wireframes** to help discover some lower level detail that might not have been as evident in a higher level process diagram.
+
+After this, I shaped the **database schema** to support the scenario. With more time and with a more extensive set of features to support, the schema would be adapted to include those fields and variations.
+
+Finally, I looked at the API design; working out what access patterns were needed to retrieve or record the data.
+
+Please view subsections below to see planning diagrams
 
 ### User Workflow
 
+![Workflow](/architecture-images/workflow.jpg)
+
 ### Wireframe of screens
+
+![Workflow](/architecture-images/wireframes.jpg
+)
 
 ### Database design
 
+![Workflow](/architecture-images/database.jpg)
+
 ### API design
 
-## Solution
+![Workflow](/architecture-images/api-design.jpg)
 
 ## Assumptions
 
+- A mobile first layout
+
 ## Enhancements
+
+- The most noticeable omission here is a built front end. Given the time constraints and playing to my strongest set of skills, I choose to focus on the backend implementation.
+- This scenario requested that end users were supported with the a transfer, given more time I would consider the other user types (i.e. employers & advisers). This would include analysis and perhaps a summary of funds at a data hierarchy level higher. Therefore this would require changes throughout the stack, most notably, database schema changes and different relationships to the data.
+- Obviously all of this data is highly sensitive so would be a natural next steps to implement with the appropriate authentication and authorisation platform
