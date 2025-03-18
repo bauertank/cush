@@ -3,6 +3,7 @@
 ## Solution
 
 The solution is available [here](/solution/). Supporting information is provided below.
+Postman collection available [here](postman_collection.json)
 
 ## Method
 After reading through the document I started by defining the  **User Workflow** to distinguish the high level steps needed to complete the scenario.
