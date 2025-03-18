@@ -1,0 +1,31 @@
+services:
+  mysql:
+    container_name: cush-mysql
+    image: mysql:8.1
+    command: mysqld --sql_mode="NO_ENGINE_SUBSTITUTION"
+    ports:
+      - 3366:3306
+    environment:
+      MYSQL_ROOT_USER: ${DB_USER}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      TZ: Europe/London
+    volumes:
+      - ./storage/mysql/data:/var/lib/mysql:delegated
+    networks:
+      - cush_serverless
+  queues:
+    container_name: cush-queues
+    image: softwaremill/elasticmq-native:latest
+    ports:
+      - 9324:9324
+      - 9325:9325
+    command: "-Dnode-address.host=\"*\""
+    networks:
+      - cush_serverless
+networks:
+  cush_serverless:
+    external: false

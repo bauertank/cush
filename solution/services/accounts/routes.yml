@@ -1,0 +1,12 @@
+accounts-service:
+  handler: services/accounts/index.handler
+  events:
+    # - http:
+    #     path: /accounts/user-id/{userId}
+    #     method: GET
+    - http:
+        path: /accounts/
+        method: ANY
+    - http:
+        path: /accounts/{proxy+}
+        method: ANY

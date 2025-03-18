@@ -1,0 +1,17 @@
+transactions-service:
+  handler: services/transactions/index.handler
+  events:
+    - http:
+        path: /transactions/
+        method: ANY
+    - http:
+        path: /transactions/{proxy+}
+        method: ANY
+record-transaction:
+  handler: services/transactions/handlers/record-transaction.handler
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - TransactionQueue
+            - Arn

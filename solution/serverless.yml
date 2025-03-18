@@ -1,0 +1,60 @@
+app: cush
+service: all
+useDotenv: true
+frameworkVersion: '3'
+package:
+  individually: true
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  deploymentMethod: direct
+  logRetentionInDays: 30
+  stage: ${opt:stage, 'dev'}
+  region: ${env:REGION}
+  memorySize: 512
+  vpc:
+    securityGroupIds:
+      - ${env:SECURITY_GROUP_ID}
+    subnetIds:
+      - ${env:SUBNET_1}
+      - ${env:SUBNET_2}
+      - ${env:SUBNET_3}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - sqs:*
+          Resource: '*'
+
+plugins:
+  - serverless-webpack
+  - serverless-offline-sqs
+  - serverless-offline
+  - serverless-dotenv-plugin
+  - serverless-plugin-scripts
+
+functions:
+  - ${file(./services/accounts/routes.yml)}
+  - ${file(./services/transactions/routes.yml)}
+
+resources:
+  - ${file(./services/transactions/resources.yml)}
+custom:
+  webpack:
+    webpackConfig: webpack.config.js
+    includeModules: true
+  defaultStage: local
+  serverless-offline:
+    httpPort: 4000
+  serverless-offline-sqs:
+    autoCreate: true
+    apiVersion: '2012-11-05'
+    endpoint: ${env:SQS_QUEUE_URL}
+    region: ${opt:region, self:provider.region}
+    accessKeyId: root
+    secretAccessKey: root
+    skipCacheInvalidation: false
+  stages:
+    local:

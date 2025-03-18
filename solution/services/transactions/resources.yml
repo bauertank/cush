@@ -1,0 +1,8 @@
+Resources:
+  TransactionQueue:
+    Type: "AWS::SQS::Queue"
+    Properties:
+      QueueName: "${opt:stage}-TransactionQueue"
+      DelaySeconds: 0
+      MessageRetentionPeriod: 345600 # 4 days
+      VisibilityTimeout: 120
