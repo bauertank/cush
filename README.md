@@ -32,12 +32,18 @@ Please view subsections below to see planning diagrams
 
 ![Workflow](/architecture-images/api-design.jpg)
 
-## Assumptions
+## Product Enhancements
 
-- A mobile first layout
+- This scenario requested that end users were supported with the a transfer, given more time I would consider the other user types (i.e. employers & advisers). This would include analysis and perhaps a summary of funds at a data hierarchy level higher. Therefore this would require changes throughout the stack, most notably, database schema changes and different relationships to the data.
+- Obviously finance data is highly sensitive so would be a natural next steps to implement with the appropriate authentication and authorisation platform including verification steps
 
-## Enhancements
+## Tech Enchancements
 
 - The most noticeable omission here is a built front end. Given the time constraints and playing to my strongest set of skills, I choose to focus on the backend implementation.
-- This scenario requested that end users were supported with the a transfer, given more time I would consider the other user types (i.e. employers & advisers). This would include analysis and perhaps a summary of funds at a data hierarchy level higher. Therefore this would require changes throughout the stack, most notably, database schema changes and different relationships to the data.
-- Obviously all of this data is highly sensitive so would be a natural next steps to implement with the appropriate authentication and authorisation platform
+- Each service is available in the mono repo, depnding on the usage profile of the services I might split these out in to their own code repositories
+- Code in resources folder (shared code) I would build as a package that could be pulled in by a package manager
+- Include types (i.e. convert to TypeScript)
+- Extra validation including ensuring valid funds available and both accounts belong to a user
+- Caching the balance value so that the balance doesn't have to be computed each time
+- Websocket implementation around the `/transactions/transfer` endpoint
+- Wrapping a transaction around the transfer so that you don't end up in a situation where one transaction succeeds and the other one fails, resulting in a balance discrepancy
