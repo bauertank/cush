@@ -3,6 +3,7 @@
 ## Solution
 
 The solution is available [here](/solution/). Supporting information is provided below.
+
 Postman collection available [here](postman_collection.json)
 
 ## Method
@@ -41,7 +42,7 @@ Please view subsections below to see planning diagrams
 ## Tech Enchancements
 
 - The most noticeable omission here is a built front end. Given the time constraints and playing to my strongest set of skills, I choose to focus on the backend implementation.
-- Each service is available in the mono repo, depnding on the usage profile of the services I might split these out in to their own code repositories
+- Each service is available in the mono repo, depending on the usage profile of the services I might split these out in to their own code repositories
 - Code in resources folder (shared code) I would build as a package that could be pulled in by a package manager
 - Include types (i.e. convert to TypeScript)
 - Extra validation including ensuring valid funds available and both accounts belong to a user
