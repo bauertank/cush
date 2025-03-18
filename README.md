@@ -45,5 +45,5 @@ Please view subsections below to see planning diagrams
 - Include types (i.e. convert to TypeScript)
 - Extra validation including ensuring valid funds available and both accounts belong to a user
 - Caching the balance value so that the balance doesn't have to be computed each time
-- Websocket implementation around the `/transactions/transfer` endpoint
+- Websocket implementation around the `/transactions/transfer` endpoint given it's dependant on event driven code
 - Wrapping a transaction around the transfer so that you don't end up in a situation where one transaction succeeds and the other one fails, resulting in a balance discrepancy
